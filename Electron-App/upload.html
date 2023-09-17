@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upload Page</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #333; 
+      padding: 20px;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .file-input {
+      display: none;
+    }
+
+    .file-label {
+      cursor: pointer;
+    }
+
+    .file-info {
+      display: block;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="mt-5">Upload Page</h1>
+    <label for="file" class="btn btn-success mt-4 file-label">Choose a file</label>
+    <input type="file" id="file" class="file-input" onchange="displayFileName()">
+    <span id="fileInfo" class="file-info"></span>
+    <button class="btn btn-primary" onclick="sendFileToServer()">Send</button>
+  </div>
+
+  <script>
+    function displayFileName() {
+      const fileInput = document.getElementById('file');
+      const fileInfo = document.getElementById('fileInfo');
+      fileInfo.innerText = `Selected file: ${fileInput.files[0].name}`;
+    }
+
+    async function sendFileToServer() {
+      const fileInput = document.getElementById('file');
+      const file = fileInput.files[0];
+
+      if (!file) {
+        alert('Please select a file.');
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      try {
+        const response = await fetch('http://156.67.208.29/upload', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (response.ok) {
+          alert('File successfully sent to the server.');
+        } else {
+          alert('Error uploading the file.');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

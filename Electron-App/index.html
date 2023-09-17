@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AR/VR in ML</title>
+    <title>AR/VR in ML</title>
   <style>
     body {
       background-color: #333;
@@ -36,20 +36,19 @@
   </style>
 </head>
 <body>
-  <button id="button1">Upload 2D</button>
+  <button id="button1" onclick="navigateToUploadPage()">Upload 2D</button>
   <button id="button2">Design</button>
 
   <script>
-    const button1 = document.getElementById('button1');
     const button2 = document.getElementById('button2');
-
-    button1.addEventListener('click', () => {
-      alert('Upload 2D clicked');
-    });
 
     button2.addEventListener('click', () => {
       alert('Design clicked');
     });
+
+    function navigateToUploadPage() {
+      window.location.href = 'upload.html';
+    }
   </script>
 </body>
 </html>
