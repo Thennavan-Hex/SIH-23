@@ -16,7 +16,7 @@
 3. Clone this repository:
 
     ```bash
-    git clone https://github.com/yourusername/your-app.git](https://github.com/Thennavan-Hex/SIH-23.git
+    git clone https://github.com/Thennavan-Hex/SIH-23.git
     ```
 4. Install the project dependencies:
 
